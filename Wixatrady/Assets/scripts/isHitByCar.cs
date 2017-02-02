@@ -14,7 +14,6 @@ public class isHitByCar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 		if (!isBoxActive)
 		{
 			timeLeft -= Time.deltaTime;
@@ -34,6 +33,7 @@ public class isHitByCar : MonoBehaviour {
 			if (isBoxActive)
 			{
 				BoxTriggered(other);
+				other.gameObject.GetComponent<playerGotItem>().GetRandomItem();
 			}
 		}
 	}
@@ -42,7 +42,6 @@ public class isHitByCar : MonoBehaviour {
 	{
 		childObject.SetActive(false);
 		isBoxActive = false;
-
 	}
 
 	public bool GetIsBoxActive(){

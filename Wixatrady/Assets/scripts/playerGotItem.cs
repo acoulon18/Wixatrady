@@ -16,19 +16,21 @@ public class playerGotItem : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.tag == "Box")
-		{
-			if (other.gameObject.GetComponent<isHitByCar>().GetIsBoxActive())
-			{
-				GetRandomItem((int)Random.Range(0,7));
-			}
-		}
-	}
+	// void OnTriggerEnter(Collider other)
+	// {
+	// 	if (other.tag == "Box")
+	// 	{
+	// 		Debug.Log(other.gameObject.GetComponent<isHitByCar>().GetIsBoxActive());
+	// 		if (other.gameObject.GetComponent<isHitByCar>().GetIsBoxActive())
+	// 		{
+	// 			GetRandomItem((int)Random.Range(0,7));
+	// 		}
+	// 	}
+	// }
 
-	void GetRandomItem(int idItem){
-		Debug.Log(idItem);
-		//Faut faire appel au HUD Manager pour afficher l'objet
+	public void GetRandomItem(){
+		//Debug.Log(idItem);
+		int randomId = Random.Range(0,7);
+		GameObject.Find("HUD").BroadcastMessage("DisplayPlayerItem", randomId);
 	}
 }
